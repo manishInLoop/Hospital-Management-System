@@ -28,7 +28,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-600 via-white-600 to-primary-700 flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-screen from-violet-600 via-white-600 to-primary-700 flex items-center justify-center px-4 relative overflow-hidden">
   
   {/* Background blobs */}
   <div className="absolute inset-0 pointer-events-none">
@@ -41,7 +41,7 @@ export default function LoginPage() {
     {/* Back link */}
     <Link
       to="/"
-      className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm mb-6 transition-colors"
+      className="inline-flex items-center gap-2 text-violet-600/70 hover:text-violet-600 text-sm mb-6 transition-colors"
     >
       <ArrowLeft size={16} />
       Back to home

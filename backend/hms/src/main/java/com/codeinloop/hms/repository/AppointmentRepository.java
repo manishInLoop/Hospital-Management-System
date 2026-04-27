@@ -15,8 +15,9 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
     //Doctor schedule for a given day
-    List<Appointment> findByDoctorIdAndAppointmentDateOrderByTimeSlotAsc(
-            Long doctorId, LocalDate date
+    List<Appointment> findByDoctorIdAndAppointmentDateGreaterThanEqualOrderByAppointmentDateAscTimeSlotAsc(
+            Long doctorId,
+            LocalDate date
     );
 
     //All Appointments for patients

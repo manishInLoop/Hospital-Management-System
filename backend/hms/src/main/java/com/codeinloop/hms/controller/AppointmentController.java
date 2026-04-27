@@ -31,14 +31,14 @@ public class AppointmentController {
 
     @GetMapping("/patient/{patientId}")
     @PreAuthorize("hasAnyAuthority('ROLE_PATIENT', 'ROLE_ADMIN', 'ROLE_DOCTOR')")
-    public ResponseEntity<List<AppointmentResponse>> getPatientAppointments(@PathVariable Long patientId){
+    public ResponseEntity<List<AppointmentResponse>> getPatientAppointments(@PathVariable("patientId") Long patientId){
         return ResponseEntity.ok(appointmentService.getPatientAppointments(patientId));
     }
 
     @PatchMapping("/{id}/status")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<AppointmentResponse> updateStatus(
-            @PathVariable Long id, @RequestParam AppointmentStatus status
+            @PathVariable("id") Long id, @RequestParam("status") AppointmentStatus status
             ) {
         return ResponseEntity.ok(appointmentService.updateStatus(id, status));
     }

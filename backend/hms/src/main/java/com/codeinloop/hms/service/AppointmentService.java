@@ -74,8 +74,10 @@ public class AppointmentService {
         doctorRepository.findByIdAndActiveTrue(doctorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Doctor not found : " + doctorId));
 
+        LocalDate filterDate = (date != null) ? date : LocalDate.now();
+
         return appointmentRepository
-                .findByDoctorIdAndAppointmentDateOrderByTimeSlotAsc(doctorId, date)
+                .findByDoctorIdAndAppointmentDateGreaterThanEqualOrderByAppointmentDateAscTimeSlotAsc(doctorId, date)
                 .stream()
                 .map(appointmentMapper::appointmentResponse)
                 .toList();

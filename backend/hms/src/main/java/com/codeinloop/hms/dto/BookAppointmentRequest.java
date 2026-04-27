@@ -1,6 +1,6 @@
 package com.codeinloop.hms.dto;
 
-import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -19,7 +19,7 @@ public class BookAppointmentRequest {
     private Long patientId;
 
     @NotNull(message = "Appointment date is required")
-    @Future(message = "Appointment date must be in the future")
+    @FutureOrPresent(message = "Appointment date must be in the future or present")
     private LocalDate appointmentDate;
 
     @NotNull(message = "Time slot is required")

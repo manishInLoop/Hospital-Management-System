@@ -35,7 +35,7 @@ public class DoctorController {
 
     @GetMapping("/{id}")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<DoctorResponse> getDoctor(@PathVariable Long id){
+    public ResponseEntity<DoctorResponse> getDoctor(@PathVariable("id") Long id){
 
         return ResponseEntity.ok(doctorService.getDoctorById(id));
     }
@@ -43,10 +43,10 @@ public class DoctorController {
     @GetMapping("/{id}/schedule")
     @PreAuthorize("hasAnyAuthority('ROLE_DOCTOR', 'ROLE_ADMIN')")
     public ResponseEntity<List<AppointmentResponse>> getDoctorSchedule(
-            @PathVariable Long id, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+            @PathVariable("id") Long id,
+            @RequestParam(value = "date" , required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate date){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(auth.getAuthorities());
         return ResponseEntity.ok(appointmentService.getDoctorSchedule(id, date));
     }
 

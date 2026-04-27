@@ -31,9 +31,9 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-900 via-violet-800 to-violet-700 flex items-center justify-center p-4 py-10">
+    <div className="min-h-screen from-violet-900 via-violet-800 to-violet-700 flex items-center justify-center p-4 py-10">
       <div className="w-full max-w-lg animate-fade-in">
-        <Link to="/" className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm mb-6 transition-colors">
+        <Link to="/" className="inline-flex items-center gap-2 text-violet-900/70 hover:text-violet-900 text-sm mb-6 transition-colors">
           <ArrowLeft size={15} /> Back to home
         </Link>
 

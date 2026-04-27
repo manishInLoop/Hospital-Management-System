@@ -1,7 +1,8 @@
 // ─── src/pages/landing/ContactSection.jsx ─────────────────────────────────────
-import { Clock, Mail, MapPin, Phone, Send } from 'lucide-react'
-import { useState } from 'react'
-import toast from 'react-hot-toast'
+import { Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { inquiryAPI } from "../../api";
 
 export default function ContactSection() {
   const [form, setForm]       = useState({ name: '', email: '', phone: '', message: '' })
@@ -9,19 +10,24 @@ export default function ContactSection() {
 
   const set = f => e => setForm(p => ({ ...p, [f]: e.target.value }))
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setSending(true)
-    setTimeout(() => {
-      toast.success('Message sent! We will contact you shortly.')
-      setForm({ name: '', email: '', phone: '', message: '' })
+
+    try{
+      await inquiryAPI.submit(form)
+      toast.success('Message sent! We will get back to you soon.')
+      setForm({name: '', email: '', phone: '', message: ''})
+    } catch (err) {
+      toast.error('failed to send message. Please try again later.')
+    } finally {
       setSending(false)
-    }, 1000)
+    }
   }
 
   const info = [
     { icon: MapPin, label: 'Address',       value: 'Maharajgunj, Kathmandu, Nepal' },
-    { icon: Phone,  label: 'Phone',         value: '+977 01-4XXXXXX' },
+    { icon: Phone,  label: 'Phone',         value: '+977 01-467856' },
     { icon: Mail,   label: 'Email',         value: 'info@medicare.com.np' },
     { icon: Clock,  label: 'Working Hours', value: 'Sun–Fri: 8am – 6pm · Emergency: 24/7' },
   ]

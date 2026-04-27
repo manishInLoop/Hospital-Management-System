@@ -13,6 +13,7 @@ import LandingPage from '@/pages/LandingPage'
 import LoginPage from '@/pages/LoginPage'
 import RegisterPage from '@/pages/RegisterPage'
 import PatientBooking from '@/patient/PatientBooking'
+import AdminInquiries from '@/admin/AdminInquiries'
 import PatientDashboard from '@/patient/PatientDashboard'
 
 function LoadingScreen() {
@@ -61,6 +62,7 @@ export default function App() {
             <Route path="doctors"      element={<AdminDoctors />} />
             <Route path="patients"     element={<AdminPatients />} />
             <Route path="appointments" element={<AdminAppointments />} />
+            <Route path="inquiries" element={<AdminInquiries />} />
           </Route>
 
           <Route path="/doctor" element={<ProtectedRoute allowedRoles={['ROLE_DOCTOR']}><Layout role="doctor" /></ProtectedRoute>}>

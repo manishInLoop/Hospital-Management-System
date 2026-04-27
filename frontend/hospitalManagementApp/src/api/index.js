@@ -48,4 +48,12 @@ export const doctorAPI = {
   getById: (id)  => api.get(`/doctors/${id}`),
 }
 
+
+export const inquiryAPI = {
+  submit: (data) => api.post('/inquiries', data),
+  getAll: () => api.get('/inquiries'),
+  countNew: () => api.get('/inquiries/count-new'),
+  updateStatus: (id, status) =>
+  api.patch(`/inquiries/${id}/status?status=${status}`),
+}
 export default api

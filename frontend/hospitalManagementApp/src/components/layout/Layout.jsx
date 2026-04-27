@@ -1,11 +1,12 @@
 import { useAuth } from '@/context/AuthContext'
 import {
-  CalendarDays,
-  Clock,
-  LayoutDashboard,
-  LogOut, Menu,
-  Stethoscope,
-  Users
+    CalendarDays,
+    Clock,
+    LayoutDashboard,
+    LogOut, Menu,
+    MessageSquare,
+    Stethoscope,
+    Users
 } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
@@ -16,6 +17,7 @@ const navConfig = {
     { to: '/admin/doctors',      icon: Stethoscope,     label: 'Doctors' },
     { to: '/admin/patients',     icon: Users,           label: 'Patients' },
     { to: '/admin/appointments', icon: CalendarDays,    label: 'Appointments' },
+    { to: '/admin/inquiries',    icon: MessageSquare,   label: 'Inquiries' },
   ],
   doctor: [
     { to: '/doctor/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
